@@ -1,0 +1,12 @@
+<h3>Albums for <em>Bruno Mars</em> </h3>
+<label for="select-album">Select an album: </label>
+<select name="select-album" id="select-album" [(ngModel)]="selectedAlbum">
+  <option [ngValue]="album" *ngFor="let album of albums">{{album.name}}</option>
+</select>
+
+<div class="selected-album" *ngIf="selectedAlbum">
+  <img width="64" height="64" [src]="selectedAlbum.images[2].url" alt="cover">
+  <span>{{selectedAlbum.name}}</span>
+  <span class="selected-album--date">{{selectedAlbum.release_date | date }}</span>
+</div>
+
