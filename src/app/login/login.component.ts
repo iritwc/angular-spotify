@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       url += '&redirect_uri=' + encodeURIComponent(this.REDIRECT_URI);
       url += '&state=' + encodeURIComponent(state);
 
-      window.location = url;
+      window.location.href = url;
   }
 
 }

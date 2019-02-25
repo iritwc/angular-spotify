@@ -17,19 +17,10 @@ export class AppComponent {
     // this.init();
   }
   init() {
-      // this.router.events.subscribe(e => {
-      //     console.log('events' ,e);
-      // });
-      //
-      // this.activatedRoute.data.subscribe(data => {
-      //     console.log('data', data);
-      // });
-      console.log('url', this.router.url);
-      console.log('snapshot url' , this.activatedRoute.snapshot.url);
       this.activatedRoute.fragment.subscribe( fragment => {
 
-          const params = {},
-              r = /([^&;=]+)=?([^&;]*)/g;
+          const params: any = {};
+          const r = /([^&;=]+)=?([^&;]*)/g;
           let e;
           while (e = r.exec(fragment)) {
               params[e[1]] = decodeURIComponent(e[2]);
@@ -38,7 +29,6 @@ export class AppComponent {
           const { access_token, state } = params;
           const stateKey = 'spotify_auth_state';
           const storedState = localStorage.getItem(stateKey);
-          // console.log(storedState, state, access_token);
           if (access_token && (state == null)) { // || state !== storedState)) {
               alert('There was an error during the authentication');
           } else {
